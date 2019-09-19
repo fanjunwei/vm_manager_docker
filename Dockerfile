@@ -23,6 +23,8 @@ npm run build; \
 systemctl enable libvirtd.service; \
 systemctl enable nginx.service; \
 systemctl enable vm-manager.service; \
+pip install -U pip -i https://pypi.doubanio.com/simple; \
+pip install -r /usr/lib/vm_manager/vm_manager_django/requirements.txt -i https://pypi.doubanio.com/simple; \
 yum clean all;
 COPY nginx.conf /etc/nginx/nginx.conf
 VOLUME [ "/sys/fs/cgroup" ]
