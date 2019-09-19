@@ -23,7 +23,7 @@ npm run build; \
 systemctl enable libvirtd.service; \
 systemctl enable nginx.service; \
 systemctl enable vm-manager.service; \
-yum clean;
+yum clean all;
 COPY nginx.conf /etc/nginx/nginx.conf
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
