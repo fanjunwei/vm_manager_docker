@@ -21,6 +21,7 @@ cd /usr/lib/vm_manager/vm_manager_vue; \
 npm install; \
 npm run build; \
 systemctl enable libvirtd.service; \
+systemctl enable nginx.service; \
 systemctl enable vm-manager.service; \
 yum clean;
 COPY nginx.conf /etc/nginx/nginx.conf
