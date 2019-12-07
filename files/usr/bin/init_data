@@ -1,3 +1,4 @@
+#!/bin/bash
 cd /init_file
 tar cf /tmp/init.tar ./*
 cd /
