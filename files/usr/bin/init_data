@@ -20,15 +20,16 @@ def create_init_file():
                 shutil.copyfile(src_file_path, dist_file_path)
 
 
-def run_cmd(cmd):
-    p = subprocess.Popen(cmd, shell=True)
+def run_cmd(cmd, cwd):
+    p = subprocess.Popen(cmd, shell=True, cwd=cwd)
     p.wait()
-    return p.returncode
+    if p.returncode:
+        exit(p.returncode)
 
 
 def main():
     create_init_file()
-    exit(run_cmd("/usr/sbin/init"))
+    run_cmd("python manage.py --noinput",'/usr/lib/vm_manager/vm_manager_django')
 
 
 if __name__ == '__main__':
