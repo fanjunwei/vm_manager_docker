@@ -28,7 +28,7 @@ def run_cmd(cmd):
 
 def main():
     create_init_file()
-    # exit(run_cmd("/usr/sbin/init"))
+    exit(run_cmd("/usr/sbin/init"))
 
 
 if __name__ == '__main__':
