@@ -12,7 +12,7 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 RUN yum -y install epel-release&& \
 curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -&& \
-yum  -y install libvirt qemu-kvm libguestfs-tools virt-install.noarch git python-pip nodejs nginx&& \
+yum  -y install libvirt qemu-kvm libguestfs-tools virt-install.noarch git python-pip nodejs nginx rabbitmq-server&& \
 mkdir -p /usr/lib/vm_manager&& \
 cd /usr/lib/vm_manager&& \
 git clone https://github.com/fanjunwei/vm_manager_vue&& \
@@ -23,8 +23,14 @@ npm run build&& \
 systemctl enable libvirtd.service&& \
 systemctl enable nginx.service&& \
 systemctl enable vm-manager.service&& \
+systemctl enable rabbitmq-server&& \
+systemctl enable vm-manager-worker@1.service&& \
+systemctl enable vm-manager-worker@2.service&& \
+systemctl enable vm-manager-worker@3.service&& \
+systemctl enable vm-manager-worker@4.service&& \
+systemctl enable vm-manager-worker@5.service&& \
 pip install -U pip -i https://pypi.doubanio.com/simple&& \
 pip install -r /usr/lib/vm_manager/vm_manager_django/requirements.txt -i https://pypi.doubanio.com/simple&& \
 yum clean all
-VOLUME ["/etc/libvirt","/var/log","/sys/fs/cgroup","/var/lib/libvirt"]
+VOLUME ["/etc/libvirt","/var/log","/sys/fs/cgroup","/var/lib/libvirt","/var/lib/rabbitmq"]
 CMD ["/usr/sbin/init"]

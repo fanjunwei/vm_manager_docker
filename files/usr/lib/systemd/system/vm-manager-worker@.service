@@ -1,0 +1,20 @@
+[Unit]
+Description=vm manager worker
+After=network.target
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+LimitNOFILE=infinity
+LimitMEMLOCK=infinity
+LimitNPROC=infinity
+User=root
+Group=root
+NotifyAccess=all
+TimeoutStartSec=0
+Environment="VM_BASE_DIR=/opt/vm_manage/vm_data"
+ExecStart=/usr/bin/celery -A vm_manager worker -l info
+WorkingDirectory=/usr/lib/vm_manager/vm_manager_django
+Restart=always
