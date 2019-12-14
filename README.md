@@ -1,21 +1,22 @@
 # 虚拟机管理
 ## 运行
 ```bash
-mkdir -p /opt/vm_manage/libvirt_config
-mkdir -p /opt/vm_manage/vm_data
-mkdir -p /opt/vm_manage/libvirt_data
+export VM_MANAGE_DIR=/opt/vm_manage
+mkdir -p $VM_MANAGE_DIR/libvirt_config
+mkdir -p $VM_MANAGE_DIR/vm_data
+mkdir -p $VM_MANAGE_DIR/libvirt_data
 docker run --rm --env VM_BASE_DIR=/opt/vm_manage/vm_data --network host --privileged \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
--v /opt/vm_manage/vm_data:/opt/vm_manage/vm_data \
--v /opt/vm_manage/libvirt_data:/var/lib/libvirt \
--v /opt/vm_manage/libvirt_config:/etc/libvirt \
--v /opt/vm_manage/rabbitmq_data:/var/lib/rabbitmq \
+-v $VM_MANAGE_DIR/vm_data:/opt/vm_manage/vm_data \
+-v $VM_MANAGE_DIR/libvirt_data:/var/lib/libvirt \
+-v $VM_MANAGE_DIR/libvirt_config:/etc/libvirt \
+-v $VM_MANAGE_DIR/rabbitmq_data:/var/lib/rabbitmq \
 fanjunwei/libvirt init_data
 docker run --name libvirt --env VM_BASE_DIR=/opt/vm_manage/vm_data -d --network host --privileged \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
--v /opt/vm_manage/vm_data:/opt/vm_manage/vm_data \
--v /opt/vm_manage/libvirt_data:/var/lib/libvirt \
--v /opt/vm_manage/libvirt_config:/etc/libvirt \
--v /opt/vm_manage/rabbitmq_data:/var/lib/rabbitmq \
+-v $VM_MANAGE_DIR/vm_data:/opt/vm_manage/vm_data \
+-v $VM_MANAGE_DIR/libvirt_data:/var/lib/libvirt \
+-v $VM_MANAGE_DIR/libvirt_config:/etc/libvirt \
+-v $VM_MANAGE_DIR/rabbitmq_data:/var/lib/rabbitmq \
 fanjunwei/libvirt
 ```
