@@ -28,5 +28,6 @@ systemctl enable vm-manager-worker@1.service&& \
 pip install -U pip -i https://pypi.doubanio.com/simple&& \
 pip install -r /usr/lib/vm_manager/vm_manager_django/requirements.txt -i https://pypi.doubanio.com/simple&& \
 yum clean all
+ENV VM_BASE_DIR /opt/vm_manage/vm_data
 VOLUME ["/etc/libvirt","/sys/fs/cgroup","/var/lib/libvirt","/var/lib/rabbitmq"]
 CMD ["/usr/sbin/init"]
