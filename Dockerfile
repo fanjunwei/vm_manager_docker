@@ -25,12 +25,8 @@ systemctl enable nginx.service&& \
 systemctl enable vm-manager.service&& \
 systemctl enable rabbitmq-server&& \
 systemctl enable vm-manager-worker@1.service&& \
-systemctl enable vm-manager-worker@2.service&& \
-systemctl enable vm-manager-worker@3.service&& \
-systemctl enable vm-manager-worker@4.service&& \
-systemctl enable vm-manager-worker@5.service&& \
 pip install -U pip -i https://pypi.doubanio.com/simple&& \
 pip install -r /usr/lib/vm_manager/vm_manager_django/requirements.txt -i https://pypi.doubanio.com/simple&& \
 yum clean all
-VOLUME ["/etc/libvirt","/var/log","/sys/fs/cgroup","/var/lib/libvirt","/var/lib/rabbitmq"]
+VOLUME ["/etc/libvirt","/sys/fs/cgroup","/var/lib/libvirt","/var/lib/rabbitmq"]
 CMD ["/usr/sbin/init"]
