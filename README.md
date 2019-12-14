@@ -1,5 +1,5 @@
 # 虚拟机管理
-## 运行
+## 初始化
 ```bash
 export VM_MANAGE_DIR=/opt/vm_manage
 mkdir -p $VM_MANAGE_DIR/libvirt_config
@@ -12,6 +12,10 @@ docker run --rm --env VM_BASE_DIR=/opt/vm_manage/vm_data --network host --privil
 -v $VM_MANAGE_DIR/libvirt_config:/etc/libvirt \
 -v $VM_MANAGE_DIR/rabbitmq_data:/var/lib/rabbitmq \
 fanjunwei/libvirt init_data
+```
+## 运行
+```bash
+export VM_MANAGE_DIR=/opt/vm_manage
 docker run --name libvirt --env VM_BASE_DIR=/opt/vm_manage/vm_data -d --network host --privileged \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
 -v $VM_MANAGE_DIR/vm_data:/opt/vm_manage/vm_data \
@@ -20,3 +24,5 @@ docker run --name libvirt --env VM_BASE_DIR=/opt/vm_manage/vm_data -d --network 
 -v $VM_MANAGE_DIR/rabbitmq_data:/var/lib/rabbitmq \
 fanjunwei/libvirt
 ```
+
+如果需求修改存储路径，请修改VM_MANAGE_DIR变量，其他内容不要修改
