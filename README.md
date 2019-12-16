@@ -7,7 +7,7 @@ mkdir -p $VM_MANAGE_DIR/vm_data
 mkdir -p $VM_MANAGE_DIR/libvirt_data
 mkdir -p $VM_MANAGE_DIR/rabbitmq_data
 chmod 777 $VM_MANAGE_DIR/rabbitmq_data
-docker run --rm --env VM_BASE_DIR=/opt/vm_manage/vm_data --network host --privileged \
+docker run --rm --network host --privileged \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
 -v $VM_MANAGE_DIR/vm_data:/opt/vm_manage/vm_data \
 -v $VM_MANAGE_DIR/libvirt_data:/var/lib/libvirt \
@@ -18,7 +18,7 @@ fanjunwei/libvirt init_data
 ## 运行
 ```bash
 export VM_MANAGE_DIR=/opt/vm_manage
-docker run --name libvirt --env VM_BASE_DIR=/opt/vm_manage/vm_data -d --network host --privileged \
+docker run --name libvirt -d --network host --privileged \
 -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
 -v $VM_MANAGE_DIR/vm_data:/opt/vm_manage/vm_data \
 -v $VM_MANAGE_DIR/libvirt_data:/var/lib/libvirt \
