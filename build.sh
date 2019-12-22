@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-CURRENT_DIR=`dirname $0`
+CURRENT_DIR=`pwd`
 cd $CURRENT_DIR
 mkdir -p ./files/usr/lib/vm_manager/
 
