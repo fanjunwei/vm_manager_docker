@@ -15,9 +15,6 @@ curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -&& \
 yum  -y install libvirt qemu-kvm libguestfs-tools virt-install.noarch git python-pip nodejs nginx rabbitmq-server&& \
 yum  -y install /rpms/*.rpm && \
 mkdir -p /usr/lib/vm_manager&& \
-cd /usr/lib/vm_manager&& \
-git clone https://github.com/fanjunwei/vm_manager_vue&& \
-git clone https://github.com/fanjunwei/vm_manager_django.git&& \
 cd /usr/lib/vm_manager/vm_manager_vue&& \
 npm install&& \
 npm run build&& \
