@@ -30,5 +30,5 @@ pip install -U pip -i https://pypi.doubanio.com/simple&& \
 pip install -r /usr/lib/vm_manager/vm_manager_django/requirements.txt -i https://pypi.doubanio.com/simple&& \
 yum clean all
 ENV VM_BASE_DIR /opt/vm_manage/vm_data
-VOLUME ["/etc/libvirt","/sys/fs/cgroup","/var/lib/libvirt","/var/lib/rabbitmq"]
+VOLUME ["/etc/libvirt","/sys/fs/cgroup","/var/lib/libvirt","/var/lib/rabbitmq","/opt/vm_manage/vm_data"]
 CMD ["/usr/sbin/init"]
