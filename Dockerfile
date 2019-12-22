@@ -11,7 +11,7 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;\
 yum -y install epel-release&& \
 curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -&& \
-yum  -y install libvirt qemu-kvm libguestfs-tools virt-install.noarch git python-pip nodejs nginx rabbitmq-server&& \
+yum  -y install libvirt qemu-kvm libguestfs-tools virt-install.noarch git python-pip nodejs nginx rabbitmq-server
 COPY files /
 RUN yum  -y install /rpms/*.rpm && \
 cd /usr/lib/vm_manager/vm_manager_vue&& \
