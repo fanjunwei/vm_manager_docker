@@ -1,6 +1,5 @@
 FROM centos:7
 ENV container docker
-COPY files /
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
@@ -9,12 +8,12 @@ rm -f /lib/systemd/system/local-fs.target.wants/*; \
 rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
 rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
-rm -f /lib/systemd/system/anaconda.target.wants/*;
-RUN yum -y install epel-release&& \
+rm -f /lib/systemd/system/anaconda.target.wants/*;\
+yum -y install epel-release&& \
 curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -&& \
 yum  -y install libvirt qemu-kvm libguestfs-tools virt-install.noarch git python-pip nodejs nginx rabbitmq-server&& \
-yum  -y install /rpms/*.rpm && \
-mkdir -p /usr/lib/vm_manager&& \
+COPY files /
+RUN yum  -y install /rpms/*.rpm && \
 cd /usr/lib/vm_manager/vm_manager_vue&& \
 npm install&& \
 npm run build&& \
