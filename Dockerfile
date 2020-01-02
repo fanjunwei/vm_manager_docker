@@ -18,6 +18,7 @@ cd /usr/lib/vm_manager/vm_manager_vue&& \
 npm install&& \
 npm run build&& \
 systemctl enable libvirtd.service&& \
+systemctl enable openvswitch.service&& \
 systemctl enable nginx.service&& \
 systemctl enable vm-manager.service&& \
 systemctl enable rabbitmq-server&& \
