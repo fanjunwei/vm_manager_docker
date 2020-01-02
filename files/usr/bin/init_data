@@ -2,7 +2,8 @@
 cd /init_file
 tar cf /tmp/init.tar ./*
 cd /
-tar xf /tmp/init.tar
+tar --skip-old-files -xf /tmp/init.tar
+rm -f /tmp/init.tar
 cd /usr/lib/vm_manager/vm_manager_django
 export VM_BASE_DIR=/opt/vm_manage/vm_data
 python manage.py migrate --noinput
